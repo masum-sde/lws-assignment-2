@@ -24,8 +24,8 @@ const OrderCreation = ({
   }, [orderedData]);
 
   function handleCreateOrder() {
-    if(!customerName) return
     const selectedItem = orderableData.filter((od) => od.isSelected);
+    if (!customerName || selectedItem.length <= 0) return;
     setOrderedData((data) => {
       return {
         ...data,
