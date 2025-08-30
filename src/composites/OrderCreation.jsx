@@ -1,39 +1,8 @@
-import Hamburger from "../assets/hamburger.svg";
-import Chicken from "../assets/chicken.svg";
-import Submarine from "../assets/submarine.svg";
-import Pizza from "../assets/pizza.svg";
+
 import { OrderItem } from "../components";
 
-const OrderCreation = () => {
-  const fakeData = [
-    {
-      id: crypto.randomUUID(),
-      name: "Hamburger",
-      imgSrc: Hamburger,
-      price: 100,
-      isSelected:true,
-    },
-    {
-      id: crypto.randomUUID(),
-      name: "Chicken Nuggets",
-      imgSrc: Chicken,
-      price: 200,
-      isSelected:false,
-    },
-    {
-      id: crypto.randomUUID(),
-      name: "Submarine Sandwich",
-      imgSrc: Submarine,
-      price: 150,
-      isSelected:false,
-    },{
-      id: crypto.randomUUID(),
-      name: "Pizza slices",
-      imgSrc: Pizza,
-      price: 80,
-      isSelected:false,
-    },
-  ];
+const OrderCreation = ({orderableData,handleToggleSelection}) => {
+  
   return (
     <div className="bg-cardbg rounded-lg p-6 h-[calc(100vh_-_130px)]">
       <h2 className="text-xl font-bold mb-1">CREATE ORDER</h2>
@@ -53,8 +22,8 @@ const OrderCreation = () => {
       <div className="mb-4">
         <label className="block text-sm font-medium mb-2">Choose Items</label>
         <div className="items-container">
-          {fakeData.map((data) => (
-            <OrderItem key={data.id} data={data} />
+          {orderableData.map((data) => (
+            <OrderItem key={data.id} data={data} handleToggleItemSelection={handleToggleSelection} />
           ))}
         </div>
       </div>
