@@ -1,10 +1,10 @@
 import OrderSummary from './OrderSummary';
 import OrderReports from './OrderReports';
 
-const OrderHistory = () => {
+const OrderHistory = ({summary}) => {
     return (
         <div className="md:col-span-2 h-[calc(100vh_-_130px)]">
-            <OrderSummary/>
+            <OrderSummary summary={summary}/>
             <OrderReports/>
         </div>
     );
