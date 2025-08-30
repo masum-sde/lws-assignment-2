@@ -47,9 +47,10 @@ const DineBoard = () => {
     setOrderSummary({
       total: orderReports.length,
       pending: orderReports.filter((or) => or.status === "PENDING").length || 0,
-      delivered: orderReports.filter((or) => or.status === "DELIVERED").length || 0,
+      delivered:
+        orderReports.filter((or) => or.status === "DELIVERED").length || 0,
     });
-    setOrderableData(fakeOrderableData)
+    setOrderableData(fakeOrderableData);
   }, [orderReports]);
 
   function handleToggleSelection(itemId) {
@@ -66,6 +67,24 @@ const DineBoard = () => {
     setOrderableData(modifiedOrderableData);
   }
 
+  function handleItemAsDelivered(itemId) {
+    const modifiedOrderReports = orderReports.map((item) => {
+      if (item.id === itemId) {
+        return {
+          ...item,
+          status: "DELIVERED",
+        };
+      } else {
+        return item;
+      }
+    });
+    setOrderReports(modifiedOrderReports);
+  }
+  function handleItemDeletion(itemId) {
+    const modifiedOrderReports = orderReports.filter((item) => item.id!==itemId);
+    setOrderReports(modifiedOrderReports);
+  }
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 flex-grow">
       <OrderCreation
@@ -75,7 +94,12 @@ const DineBoard = () => {
           setOrderReports((data) => [...data, newOrderedData])
         }
       />
-      <OrderHistory summary={OrderSummary}/>
+      <OrderHistory
+        summary={OrderSummary}
+        reports={orderReports}
+        onDeliver={handleItemAsDelivered}
+        onDelete={handleItemDeletion}
+      />
     </div>
   );
 };

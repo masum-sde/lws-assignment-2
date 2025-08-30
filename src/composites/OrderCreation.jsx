@@ -18,12 +18,13 @@ const OrderCreation = ({
   useEffect(() => {
     if (orderedData.id) {
       handleOrderSubmit(orderedData);
-      setCustomerName('')
-      setOrderedData(initOrderCreationData)
+      setCustomerName("");
+      setOrderedData(initOrderCreationData);
     }
   }, [orderedData]);
 
   function handleCreateOrder() {
+    if(!customerName) return
     const selectedItem = orderableData.filter((od) => od.isSelected);
     setOrderedData((data) => {
       return {
@@ -50,6 +51,7 @@ const OrderCreation = ({
           type="text"
           className="w-full bg-gray-700 bg-opacity-50 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300"
           value={customerName}
+          placeholder="e.g. Jack Samdani"
           onChange={(e) => setCustomerName(e.target.value)}
         />
       </div>
@@ -68,7 +70,7 @@ const OrderCreation = ({
       </div>
 
       <button
-        className="w-full bg-primary hover:bg-opacity-90 text-white font-medium py-3 rounded-full transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1"
+        className="w-full bg-primary cursor-pointer hover:bg-opacity-90 text-white font-medium py-3 rounded-full transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1"
         onClick={handleCreateOrder}
       >
         Place Order (BDT{" "}

@@ -1,6 +1,6 @@
 import React from "react";
 
-const OrderReports = () => {
+const OrderReports = ({ reports,onDeliver,onDelete }) => {
   return (
     <div>
       <div class="flex justify-between">
@@ -30,160 +30,53 @@ const OrderReports = () => {
       </div>
       <div class="bg-cardbg rounded-lg p-4">
         <div class="reports-container">
-          <table class="min-w-full">
-            <thead>
-              <tr class="text-left text-sm">
-                <th class="pb-3 font-medium">ID</th>
-                <th class="pb-3 font-medium">Customer Name</th>
-                <th class="pb-3 font-medium">Items</th>
-                <th class="pb-3 font-medium">Amount</th>
-                <th class="pb-3 font-medium">Status</th>
-                <th class="pb-3 font-medium">Action</th>
-              </tr>
-            </thead>
-            <tbody class="text-sm">
-              <tr class="border-t border-gray-700">
-                <td class="py-3">21</td>
-                <td class="py-3">Sumit Saha</td>
-                <td class="py-3">5</td>
-                <td class="py-3">123123</td>
-                <td class="py-3">
-                  <span class="text-red-500">PENDING</span>
-                </td>
-                <td class="py-3">
-                  <button class="bg-gray-800 hover:bg-red-600 text-xs px-3 py-1 rounded-full mr-1 transition-colors duration-300">
-                    Delete
-                  </button>
-                  <button class="bg-gray-800 hover:bg-green-600 text-xs px-3 py-1 rounded-full transition-colors duration-300">
-                    DELIVER
-                  </button>
-                </td>
-              </tr>
-
-              <tr class="border-t border-gray-700">
-                <td class="py-3">21</td>
-                <td class="py-3">Akash Ahmed</td>
-                <td class="py-3">5</td>
-                <td class="py-3">123123</td>
-                <td class="py-3">
-                  <span class="text-green-500">DELIVERED</span>
-                </td>
-                <td class="py-3">
-                  <button class="bg-gray-800 hover:bg-red-600 text-xs px-3 py-1 rounded-full mr-1 transition-colors duration-300">
-                    Delete
-                  </button>
-                </td>
-              </tr>
-
-              <tr class="border-t border-gray-700">
-                <td class="py-3">21</td>
-                <td class="py-3">Saad Hasan</td>
-                <td class="py-3">5</td>
-                <td class="py-3">123123</td>
-                <td class="py-3">
-                  <span class="text-red-500">PENDING</span>
-                </td>
-                <td class="py-3">
-                  <button class="bg-gray-800 hover:bg-red-600 text-xs px-3 py-1 rounded-full mr-1 transition-colors duration-300">
-                    Delete
-                  </button>
-                  <button class="bg-gray-800 hover:bg-green-600 text-xs px-3 py-1 rounded-full transition-colors duration-300">
-                    DELIVER
-                  </button>
-                </td>
-              </tr>
-
-              <tr class="border-t border-gray-700">
-                <td class="py-3">21</td>
-                <td class="py-3">MD Salahuddin</td>
-                <td class="py-3">5</td>
-                <td class="py-3">123123</td>
-                <td class="py-3">
-                  <span class="text-red-500">PENDING</span>
-                </td>
-                <td class="py-3">
-                  <button class="bg-gray-800 hover:bg-red-600 text-xs px-3 py-1 rounded-full mr-1 transition-colors duration-300">
-                    Delete
-                  </button>
-                  <button class="bg-gray-800 hover:bg-green-600 text-xs px-3 py-1 rounded-full transition-colors duration-300">
-                    DELIVER
-                  </button>
-                </td>
-              </tr>
-
-              <tr class="border-t border-gray-700">
-                <td class="py-3">21</td>
-                <td class="py-3">Ferdous</td>
-                <td class="py-3">5</td>
-                <td class="py-3">123123</td>
-                <td class="py-3">
-                  <span class="text-red-500">PENDING</span>
-                </td>
-                <td class="py-3">
-                  <button class="bg-gray-800 hover:bg-red-600 text-xs px-3 py-1 rounded-full mr-1 transition-colors duration-300">
-                    Delete
-                  </button>
-                  <button class="bg-gray-800 hover:bg-green-600 text-xs px-3 py-1 rounded-full transition-colors duration-300">
-                    DELIVER
-                  </button>
-                </td>
-              </tr>
-
-              <tr class="border-t border-gray-700">
-                <td class="py-3">21</td>
-                <td class="py-3">Rafe</td>
-                <td class="py-3">5</td>
-                <td class="py-3">123123</td>
-                <td class="py-3">
-                  <span class="text-red-500">PENDING</span>
-                </td>
-                <td class="py-3">
-                  <button class="bg-gray-800 hover:bg-red-600 text-xs px-3 py-1 rounded-full mr-1 transition-colors duration-300">
-                    Delete
-                  </button>
-                  <button class="bg-gray-800 hover:bg-green-600 text-xs px-3 py-1 rounded-full transition-colors duration-300">
-                    DELIVER
-                  </button>
-                </td>
-              </tr>
-
-              <tr class="border-t border-gray-700">
-                <td class="py-3">21</td>
-                <td class="py-3">Sarwar</td>
-                <td class="py-3">5</td>
-                <td class="py-3">123123</td>
-                <td class="py-3">
-                  <span class="text-red-500">PENDING</span>
-                </td>
-                <td class="py-3">
-                  <button class="bg-gray-800 hover:bg-red-600 text-xs px-3 py-1 rounded-full mr-1 transition-colors duration-300">
-                    Delete
-                  </button>
-                  <button class="bg-gray-800 hover:bg-green-600 text-xs px-3 py-1 rounded-full transition-colors duration-300">
-                    DELIVER
-                  </button>
-                </td>
-              </tr>
-
-              <tr class="border-t border-gray-700">
-                <td class="py-3">21</td>
-                <td class="py-3">Obaidul</td>
-                <td class="py-3">5</td>
-                <td class="py-3">123123</td>
-                <td class="py-3">
-                  <span class="text-red-500">PENDING</span>
-                </td>
-                <td class="py-3">
-                  <button class="bg-gray-800 hover:bg-red-600 text-xs px-3 py-1 rounded-full mr-1 transition-colors duration-300">
-                    Delete
-                  </button>
-                  <button class="bg-gray-800 hover:bg-green-600 text-xs px-3 py-1 rounded-full transition-colors duration-300">
-                    DELIVER
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          {reports.length > 0 ? (
+            <table class="min-w-full">
+              <thead>
+                <tr class="text-left text-sm">
+                  <th class="pb-3 font-medium">ID</th>
+                  <th class="pb-3 font-medium">Customer Name</th>
+                  <th class="pb-3 font-medium">Items</th>
+                  <th class="pb-3 font-medium">Amount</th>
+                  <th class="pb-3 font-medium">Status</th>
+                  <th class="pb-3 font-medium">Action</th>
+                </tr>
+              </thead>
+              <tbody class="text-sm">
+                {reports.map((report) => (
+                  <tr class="border-t border-gray-700">
+                    <td class="py-3">#{report.id.slice(-5)}</td>
+                    <td class="py-3">{report.customerName}</td>
+                    <td class="py-3">{report.itemCount}</td>
+                    <td class="py-3">{report.totalAmount}</td>
+                    <td class="py-3">
+                      <span
+                        class={
+                          report.status === "PENDING"
+                            ? "text-red-500"
+                            : "text-green-500"
+                        }
+                      >
+                        {report.status}
+                      </span>
+                    </td>
+                    <td class="py-3">
+                      <button class="bg-gray-800 hover:bg-red-600 text-xs px-3 py-1 rounded-full mr-1 transition-colors duration-300" onClick={()=>onDelete(report.id)}>
+                        Delete
+                      </button>
+                      {report.status === "PENDING" && (
+                        <button class="bg-gray-800 hover:bg-green-600 text-xs px-3 py-1 rounded-full transition-colors duration-300" onClick={()=>onDeliver(report.id)}>
+                          DELIVER
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <div className="text-center animate-pulse"> No Data Found</div>
+          )}
         </div>
       </div>
     </div>
