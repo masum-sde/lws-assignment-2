@@ -42,6 +42,7 @@ const DineBoard = () => {
     pending: 0,
     delivered: 0,
   });
+  const [persistentOrderReports, setPersistentOrderReports] = useState([]);
   const [orderReports, setOrderReports] = useState([]);
   useEffect(() => {
     setOrderSummary({
@@ -67,6 +68,22 @@ const DineBoard = () => {
     setOrderableData(modifiedOrderableData);
   }
 
+  function handleFilter(filterType) {
+    if (filterType === "PENDING") {
+      const modifiedOrderReports = persistentOrderReports.filter(
+        (item) => item.status === filterType
+      );
+      setOrderReports(modifiedOrderReports);
+    } else if (filterType === "DELIVERED") {
+      const modifiedOrderReports = persistentOrderReports.filter(
+        (item) => item.status === filterType
+      );
+      setOrderReports(modifiedOrderReports);
+    } else {
+      setOrderReports(persistentOrderReports);
+    }
+  }
+
   function handleItemAsDelivered(itemId) {
     const modifiedOrderReports = orderReports.map((item) => {
       if (item.id === itemId) {
@@ -78,10 +95,14 @@ const DineBoard = () => {
         return item;
       }
     });
+    setPersistentOrderReports(modifiedOrderReports);
     setOrderReports(modifiedOrderReports);
   }
   function handleItemDeletion(itemId) {
-    const modifiedOrderReports = orderReports.filter((item) => item.id!==itemId);
+    const modifiedOrderReports = orderReports.filter(
+      (item) => item.id !== itemId
+    );
+    setPersistentOrderReports(modifiedOrderReports);
     setOrderReports(modifiedOrderReports);
   }
 
@@ -90,13 +111,15 @@ const DineBoard = () => {
       <OrderCreation
         orderableData={orderableData}
         handleToggleSelection={handleToggleSelection}
-        handleOrderSubmit={(newOrderedData) =>
-          setOrderReports((data) => [...data, newOrderedData])
-        }
+        handleOrderSubmit={(newOrderedData) => {
+          setPersistentOrderReports((data) => [...data, newOrderedData]);
+          setOrderReports((data) => [...data, newOrderedData]);
+        }}
       />
       <OrderHistory
         summary={OrderSummary}
         reports={orderReports}
+        onFilter={handleFilter}
         onDeliver={handleItemAsDelivered}
         onDelete={handleItemDeletion}
       />
